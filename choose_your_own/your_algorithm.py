@@ -31,10 +31,31 @@ plt.show()
 ### your code here!  name your classifier object clf if you want the 
 ### visualization code (prettyPicture) to show you the decision boundary
 
+from sklearn.ensemble import AdaBoostClassifier
+
+clf= AdaBoostClassifier(n_estimators=25)
+
+Reduce=1
+
+features_train_red = features_train[:int(len(features_train)/Reduce)]
+labels_train_red = labels_train[:int(len(labels_train)/Reduce)]
 
 
+from time import time
 
+t0 = time()
+clf.fit(features_train_red, labels_train_red)
+print ("training time:", round(time()-t0, 3), "s")
 
+t1 = time()
+pred = clf.predict(features_test)
+print ("prediction time:", round(time()-t1, 3), "s")
+
+from sklearn.metrics import accuracy_score
+
+Accuracy = accuracy_score(labels_test, pred)
+
+print(Accuracy)
 
 
 
@@ -42,3 +63,32 @@ try:
     prettyPicture(clf, features_test, labels_test)
 except NameError:
     pass
+
+
+#%% ########################################################
+### your code goes here ###
+
+from sklearn.svm import SVC
+
+clf = SVC(C=100,kernel="rbf",gamma='scale')
+
+t0 = time()
+clf.fit(features_train, labels_train)
+print ("training time:", round(time()-t0, 3), "s")
+
+t1 = time()
+pred = clf.predict(features_test)
+print ("prediction time:", round(time()-t1, 3), "s")
+
+from sklearn.metrics import accuracy_score
+
+Accuracy = accuracy_score(labels_test, pred)
+
+print(Accuracy)
+
+
+try:
+    prettyPicture(clf, features_test, labels_test)
+except NameError:
+    pass
+#########################################################
