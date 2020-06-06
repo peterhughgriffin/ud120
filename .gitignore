@@ -11,3 +11,5 @@ my_feature_list.pkl
 *.tar.gz
 
 .ipynb_checkpoints/
+*.png
+
