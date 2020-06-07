@@ -78,7 +78,7 @@ for person in enron_data:
     if enron_data[person]['total_payments'] == 'NaN':
         TotalPay += 1
         print(person)
-        
+
 print(TotalPay/len(enron_data)*100)
       
 #%%
