@@ -12,4 +12,5 @@ my_feature_list.pkl
 
 .ipynb_checkpoints/
 *.png
+*.pdf
 
